@@ -7,9 +7,20 @@ import jwt
 import os
 from datetime import datetime, timedelta
 from functools import wraps
+from routes.notifications import notifications
+from routes.auth import auth
+from routes.posts import posts
+from routes.users import users
+from routes.stories import stories
+from routes.messages import messages
+from routes.bookmarks import bookmarks
+from routes.admin import admin
+from routes.verification import verification
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for React frontend
+
+app.register_blueprint(notifications)
 
 app.config['SECRET_KEY'] = 'your-secret-key-change-this'
 app.config['UPLOAD_FOLDER'] = 'uploads'
